@@ -29,7 +29,7 @@ async function connectDB() {
         const newUser = new User({
             firstname: "Pepe",
             lastname: "Pechudo",
-            email: "elpepe.pechudo@gmail.com",
+            email: "elpepe2.pechudo@gmail.com",
             roles: {
                 admin: true,
                 doctor: false,
