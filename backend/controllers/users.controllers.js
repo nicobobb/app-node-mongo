@@ -9,6 +9,7 @@ const login = async (req, res) => {
             admin: true,
             doctor: false,
         },
+        pass: "123456",
     });
 
     // Guarda el nuevo usuario en la base de datos
