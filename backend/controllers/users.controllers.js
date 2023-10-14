@@ -1,19 +1,14 @@
 import UserModel from "../models/users.models.js";
 
 const login = async (req, res) => {
+    const { firstname, lastname, email, roles, pass } = req.body;
     const newUser = await new UserModel({
-        firstname: "Pepe",
-        lastname: "Pechudo",
-        email: "elpepe56.pechudo@gmail.com",
-        roles: {
-            admin: true,
-            doctor: false,
-        },
-        pass: "123456",
-    });
-
-    // Guarda el nuevo usuario en la base de datos
-    await newUser.save();
+        firstname,
+        lastname,
+        email,
+        roles,
+        pass,
+    }).save();
 
     console.log("Usuario guardado exitosamente:", newUser);
     res.json({ message: newUser });
