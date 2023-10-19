@@ -12,6 +12,7 @@ const userSchema = new Schema({
         },
         required: true,
     },
+    date: { type: Date, default: Date.now },
 })
 
 export default model('User', userSchema, 'users')
