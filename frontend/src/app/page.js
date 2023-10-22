@@ -8,7 +8,12 @@ export default function Home() {
         formState: { errors },
     } = useForm();
 
-    const onSubmit = (data) => console.log(data);
+    const onSubmit = async (data) => {
+        console.log(data);
+        const res = fetch("/api/login");
+
+        console.log(res);
+    };
     return (
         <>
             <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
