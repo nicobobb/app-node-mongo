@@ -36,7 +36,7 @@ export default function Home() {
 
                             <div className="relative">
                                 <input
-                                    {...register("email")}
+                                    {...register("email", { required: true })}
                                     type="email"
                                     className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                                     placeholder="Email"
@@ -68,7 +68,9 @@ export default function Home() {
 
                             <div className="relative">
                                 <input
-                                    {...register("password")}
+                                    {...register("password", {
+                                        required: true,
+                                    })}
                                     type="password"
                                     className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                                     placeholder="Contraseña"
