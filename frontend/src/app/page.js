@@ -1,6 +1,9 @@
 "use client";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import toast, { Toaster } from "react-hot-toast";
 export default function Home() {
+    const router = useRouter();
     const {
         register,
         handleSubmit,
@@ -10,9 +13,22 @@ export default function Home() {
 
     const onSubmit = async (data) => {
         console.log(data);
-        const res = fetch("/api/login");
-
-        console.log(res);
+        const res = await fetch("http://localhost:5000/users/login", {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json",
+            },
+            body: JSON.stringify({
+                email: data.email,
+                pass: data.pass,
+            }),
+        });
+        data = await res.json();
+        if (data.message) {
+            router.push("/home");
+        } else {
+            toast.error("Email o contraseña incorrectos");
+        }
     };
     return (
         <>
@@ -73,7 +89,7 @@ export default function Home() {
 
                             <div className="relative">
                                 <input
-                                    {...register("password", {
+                                    {...register("pass", {
                                         required: true,
                                     })}
                                     type="password"
@@ -121,6 +137,7 @@ export default function Home() {
                         </p>
                     </form>
                 </div>
+                <Toaster />
             </div>
         </>
     );
