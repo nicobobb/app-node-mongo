@@ -1,5 +1,5 @@
 const Home = () => {
-    return <div>Gracias por iniciar sesión</div>;
+    return <>Panel de Administración</>;
 };
 
 export default Home;
