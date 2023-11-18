@@ -2,7 +2,9 @@
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
-export default function Home() {
+import Link from "next/link";
+
+export default function Inicio() {
     const router = useRouter();
     const {
         register,
@@ -20,7 +22,7 @@ export default function Home() {
             },
             body: JSON.stringify({
                 email: data.email,
-                pass: data.pass,
+                password: data.pass,
             }),
         });
         data = await res.json();
@@ -131,9 +133,9 @@ export default function Home() {
 
                         <p className="text-center text-sm text-gray-500">
                             ¿No estás registrado?{" "}
-                            <a className="underline" href="">
+                            <Link href="/crear-cuenta" className="underline">
                                 Crear cuenta
-                            </a>
+                            </Link>
                         </p>
                     </form>
                 </div>
