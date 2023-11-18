@@ -44,6 +44,7 @@ const loginUser = async (req, res, next) => {
         if (!validPass) {
             return res.status(401).send({ error: 'Contraseña incorrecta' })
         }
+        res.cookie('jwt', 'este_es_mi_dato_guardado')
         res.json({ message: 'Bienvenido' })
     } catch (error) {
         next(error)

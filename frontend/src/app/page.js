@@ -24,6 +24,7 @@ export default function Inicio() {
                 email: data.email,
                 password: data.pass,
             }),
+            credentials: "include",
         });
         data = await res.json();
         if (data.message) {
