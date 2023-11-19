@@ -1,5 +1,6 @@
 import bcrypt from 'bcryptjs'
 import UserModel from '../models/users.models.js'
+import jwt from 'jsonwebtoken'
 
 const createUser = async (req, res, next) => {
     try {
@@ -45,7 +46,11 @@ const loginUser = async (req, res, next) => {
         if (!validPass) {
             return res.status(401).send({ error: 'Contraseña incorrecta' })
         }
-        res.cookie('jwt', 'este_es_mi_dato_guardado')
+        const token = jwt.sign(
+            { _id: user._id, email: user.email },
+            process.env.TOKEN_SECRET
+        )
+        res.cookie('jwt', token, { httpOnly: true, maxAge: 3600000 })
         res.json({ message: 'Bienvenido' })
     } catch (error) {
         next(error)
