@@ -27,6 +27,7 @@ const createUser = async (req, res, next) => {
 const getAllUsers = async (req, res, next) => {
     try {
         const allUsers = await UserModel.find()
+        console.log({ cookie: req.cookies })
         res.json(allUsers)
     } catch (error) {
         next(error)
