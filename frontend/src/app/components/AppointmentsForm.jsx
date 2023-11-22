@@ -19,8 +19,8 @@ const AppointmentsForm = () => {
                 title: data.title,
                 start: data.start,
                 end: data.end,
-                userId: data.userId,
             }),
+            credentials: "include",
         });
         if (response.ok) {
             toast.success("Cita creada correctamente");
@@ -78,21 +78,7 @@ const AppointmentsForm = () => {
                         {...register("end", { required: true })}
                     />
                 </div>
-                <div className="mb-4">
-                    <label
-                        className="block text-gray-700 text-sm font-bold mb-2"
-                        htmlFor="userId"
-                    >
-                        ID de Usuario:
-                    </label>
-                    <input
-                        type="text"
-                        id="userId"
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        placeholder="ID de usuario"
-                        {...register("useId", { required: true })}
-                    />
-                </div>
+
                 <div className="flex items-center justify-between">
                     <button
                         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"

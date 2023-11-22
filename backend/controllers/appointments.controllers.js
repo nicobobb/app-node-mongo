@@ -11,12 +11,12 @@ const getAllAppointments = async (req, res, next) => {
 
 const createAppointment = async (req, res, next) => {
     try {
-        const { title, start, end, userId } = req.body
+        const { title, start, end } = req.body
         const newAppointment = await new AppointmentModel({
             title,
             start,
             end,
-            userId,
+            userId: req.user._id,
         }).save()
         console.log('Cita guardada exitosamente:', newAppointment)
         res.json({ message: newAppointment })
