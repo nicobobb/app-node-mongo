@@ -12,6 +12,21 @@ const AppointmentsForm = () => {
 
     const onSubmit = async (data) => {
         console.log(data);
+        const response = await fetch("http://localhost:5000/appointments", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                title: data.title,
+                start: data.start,
+                end: data.end,
+                userId: data.userId,
+            }),
+        });
+        if (response.ok) {
+            toast.success("Cita creada correctamente");
+        } else {
+            toast.error("Error al crear la cita");
+        }
     };
 
     return (
