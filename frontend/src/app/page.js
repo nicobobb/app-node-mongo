@@ -15,20 +15,17 @@ export default function Inicio() {
 
   const onSubmit = async (data) => {
     console.log(data);
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL / users / login}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({
-          email: data.email,
-          password: data.pass,
-        }),
-        credentials: "include",
-      }
-    );
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/login`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        email: data.email,
+        password: data.pass,
+      }),
+      credentials: "include",
+    });
     data = await res.json();
     if (data.message) {
       router.push("/home");
@@ -45,7 +42,7 @@ export default function Inicio() {
           </h1>
 
           <p className="mx-auto mt-4 max-w-md text-center text-gray-500">
-            Accede a todas las funcionalidades de la aplicación
+            Accede a todas las funcionalidades de la aplicación.
           </p>
 
           <form

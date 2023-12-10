@@ -13,7 +13,7 @@ const AppointmentsForm = () => {
   const onSubmit = async (data) => {
     console.log(data);
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL / appointments}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/appointments`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

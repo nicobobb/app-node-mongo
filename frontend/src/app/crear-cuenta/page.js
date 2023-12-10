@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
-const crearCuenta = () => {
+const CrearCuenta = () => {
   const router = useRouter();
   const {
     register,
@@ -12,7 +12,7 @@ const crearCuenta = () => {
   } = useForm();
   const onSubmit = async (data) => {
     console.log(data);
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL / users}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -91,4 +91,4 @@ const crearCuenta = () => {
   );
 };
 
-export default crearCuenta;
+export default CrearCuenta;

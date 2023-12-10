@@ -4,7 +4,7 @@ import { NotFoundAppointments } from "../components/NotFoundAppointments";
 
 const getData = async () => {
   const cookieStore = cookies();
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL / appointments}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/appointments`, {
     method: "GET",
     cache: "no-store",
     headers: {
@@ -15,7 +15,6 @@ const getData = async () => {
   const data = await res.json();
   return data;
 };
-
 const appointments = async () => {
   const appointments = await getData();
   return (
