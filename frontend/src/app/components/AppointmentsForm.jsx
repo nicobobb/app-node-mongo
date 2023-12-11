@@ -2,8 +2,10 @@
 
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const AppointmentsForm = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -27,6 +29,7 @@ const AppointmentsForm = () => {
     );
     if (response.ok) {
       toast.success("Cita creada correctamente");
+      router.push("/appointments");
     } else {
       toast.error("Error al crear la cita");
     }
